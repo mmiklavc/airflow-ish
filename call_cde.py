@@ -26,6 +26,7 @@ ingest_step1 = CdeRunJobOperator(
 )
 
 prep_step2 = CdeRunJobOperator(
+    connection_id='kesha-blah-blah-blah',
     task_id='data_prep',
     dag=example_dag,
     job_name='pi-calculator'
