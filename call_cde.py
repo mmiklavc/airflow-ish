@@ -12,7 +12,7 @@ default_args = {
 example_dag = DAG(
     'example-cdeoperator',
     default_args=default_args,
-    schedule_interval='@once',
+    schedule='@once',
     catchup=False,
     is_paused_upon_creation=False
 )
