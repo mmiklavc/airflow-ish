@@ -17,19 +17,14 @@ example_dag = DAG(
     is_paused_upon_creation=False
 )
 
-ingest_step1 = CdeRunJobOperator(
+step1 = CdeRunJobOperator(
     connection_id='kesha-blah-blah-blah',
     task_id='ingest',
     retries=3,
     dag=example_dag,
-    job_name='pi-calculator'
+    job_name='pi-calculator',
+    queue='kubernetes',
+    pool='default_pool'
 )
 
-prep_step2 = CdeRunJobOperator(
-    connection_id='kesha-blah-blah-blah',
-    task_id='data_prep',
-    dag=example_dag,
-    job_name='pi-calculator'
-)
-
-ingest_step1 >> prep_step2
+step1
